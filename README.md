@@ -260,7 +260,7 @@ Potential improvements include:
 
 # Author
 
-O. Hillary
+O. Hillary -
 Software Engineer
 
 ---

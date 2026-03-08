@@ -10,11 +10,21 @@ export default function TransactionList() {
   const deleteTransaction = useFinanceStore((s) => s.deleteTransaction);
   const openModal = useFinanceStore((s) => s.openTransactionModal);
   const [filter, setFilter] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
 
-  const filteredTransactions =
-    filter === "all"
-      ? transactions
-      : transactions.filter((t) => t.type === filter);
+  // const filteredTransactions =
+  //   filter === "all"
+  //     ? transactions
+  //     : transactions.filter((t) => t.type === filter);
+
+  const filteredTransactions = transactions.filter((t) => {
+  const typeMatch = filter === "all" || t.type === filter;
+
+  const categoryMatch =
+    categoryFilter === "all" || t.category === categoryFilter;
+
+  return typeMatch && categoryMatch;
+});
 
   const sortedTransactions = [...filteredTransactions].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -26,7 +36,7 @@ export default function TransactionList() {
         Transactions
       </h2>
 
-        {/*//Filter categories */}
+      {/*//Filter categories */}
       <div className="flex gap-1.5 mb-4">
         <button
           onClick={() => setFilter("all")}
@@ -57,6 +67,40 @@ export default function TransactionList() {
           Income
         </button>
       </div>
+
+      <div className="flex gap-1.5 mb-4 flex-wrap">
+        <button
+          onClick={() => setCategoryFilter("all")}
+          className={`px-3 py-1 rounded-full text-xs ${
+            categoryFilter === "all"
+              ? "bg-teal-100 text-teal-500"
+              : "bg-gray-100 text-gray-500"
+          }`}
+        >
+          All Categories
+        </button>
+
+        <button onClick={() => setCategoryFilter("Food")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
+          Food
+        </button>
+
+        <button onClick={() => setCategoryFilter("Housing")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
+          Housing
+        </button>
+
+        <button onClick={() => setCategoryFilter("Transport")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
+          Transport
+        </button>
+
+        <button onClick={() => setCategoryFilter("Entertainment")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
+          Entertainment
+        </button>
+
+        <button onClick={() => setCategoryFilter("Utilities")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
+          Utilities
+        </button>
+      </div>
+      {/*//Filter categories END*/}
 
         {
           transactions.length?        
