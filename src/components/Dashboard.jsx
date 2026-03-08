@@ -43,7 +43,7 @@ export default function Dashboard() {
 
             <div className="flex justify-between">
                 <div className="flex flex-col me-4">
-                    <p className="text-2xl font-semibold">{formatNumber(current.income)}</p>
+                    <p className="text-2xl font-medium mb-1">{formatNumber(current.income)}</p>
                     {renderChange(incomeChange)}
                 </div>
 
@@ -65,7 +65,7 @@ export default function Dashboard() {
 
             <div className="flex justify-between">
                 <div className="flex flex-col me-4">
-                    <p className="text-2xl font-semibold">{formatNumber(current.expenses)}</p>
+                    <p className="text-2xl font-medium mb-1">{formatNumber(current.expenses)}</p>
                     {renderChange(expenseChange)}
                 </div>
 
@@ -87,7 +87,7 @@ export default function Dashboard() {
 
             <div className="flex justify-between">
                 <div className="flex flex-col me-4">
-                    <p className="text-2xl font-semibold">{formatNumber(current.balance)}</p>
+                    <p className="text-2xl font-medium mb-1">{formatNumber(current.balance)}</p>
                     {renderChange(balanceChange)}
                 </div>
 
