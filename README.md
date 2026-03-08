@@ -1,5 +1,7 @@
 # Personal Finance Snapshot (Option A)
 
+![Budget Progress](screenshots/dashboard.png)
+
 A **personal finance tracking application** built with **React and Zustand** that helps users record transactions, monitor spending, and manage a monthly budget.
 
 Personal finance applications typically allow users to track income and expenses, categorize transactions, and visualize spending patterns to better understand and control their financial habits. ([Medium][1])
@@ -41,6 +43,24 @@ Users can also:
 
 ## Budget Progress Indicator
 
+![Budget Progress](screenshots/budget-viewer.png)
+
+The application includes a **visual progress bar** that shows how much of the monthly budget has been used.
+
+Color indicators:
+
+* **Green** → Safe spending
+* **Yellow** → Approaching limit
+* **Red** → Budget almost exhausted
+
+This allows users to quickly understand their financial position.
+
+---
+
+## Transaction History
+
+![Budget Progress](screenshots/transactions.png)
+
 The application includes a **visual progress bar** that shows how much of the monthly budget has been used.
 
 Color indicators:
@@ -66,7 +86,9 @@ This ensures accurate monthly spending calculations.
 
 ## Charts and Financial Insights
 
-The dashboard provides charts that help users visualize:
+![Budget Progress](screenshots/monthly-spending.png)
+
+The dashboard provides a chart that help users visualize:
 
 * expenses trend
 
@@ -75,6 +97,8 @@ Visual analytics help users understand spending behavior and identify patterns.
 ---
 
 ## Transaction Modal
+
+![Budget Progress](screenshots/budget-viewer.png)
 
 Transactions are created through a modal interface that allows users to quickly add financial records without leaving the dashboard.
 
@@ -121,7 +145,7 @@ src
 │   ├── AddTransaction.jsx
 │   ├── TransactionList.jsx
 │   ├── Charts.jsx
-│   ├── BudgetProgress.jsx
+│   ├── Budget.jsx
 │   └── sub-components
 │       └── Button.jsx
 │
@@ -166,7 +190,7 @@ npm run dev
 
 ## Adding Transactions
 
-![Add Transaction](docs/add-transaction.png)
+![Add Transaction](screenshots/add-transaction.png)
 
 Users can create a transaction by opening the transaction modal and entering:
 
@@ -182,7 +206,7 @@ The transaction is saved to the Zustand store and persisted in LocalStorage.
 
 ## Budget creation
 
-![Budget Progress](docs/budget.png)
+![Budget Progress](screenshots/budget-viewer.png)
 
 When a user sets a budget:
 
