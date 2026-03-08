@@ -2,7 +2,7 @@ import Dashboard from "./components/Dashboard";
 import AddTransaction from "./components/AddTransaction";
 import TransactionList from "./components/TransactionList";
 import Charts from "./components/Charts";
-import BudgetProgress from "./components/Budget";
+import BudgetProgress from "./components/budget";
 import { Plus, XIcon } from "lucide-react";
 import { useFinanceStore } from "./store/financeStore";
 
