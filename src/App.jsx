@@ -36,7 +36,7 @@ export default function App() {
             
             <button
               onClick={closeModal}
-              className="absolute top-7 right-6 text-gray-500 p-2 hover:text-red-500 hover:bg-red-50 rounded-full text-xl"
+              className="absolute top-6 right-6 text-gray-500 p-2 hover:text-red-500 hover:bg-red-50 rounded-full text-xl"
             >
               <XIcon strokeWidth = {4} size = {15}/>
             </button>

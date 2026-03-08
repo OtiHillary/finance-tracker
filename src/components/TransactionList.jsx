@@ -3,6 +3,7 @@ import { useFinanceStore } from "../store/financeStore";
 import { getCategoryIcon } from "../utils/categoryIcon"
 import { formatNumber } from "../utils/formatter";
 import { Trash2 } from "lucide-react";
+import Button from "./sub-components/Button";
 
 export default function TransactionList() {
   const transactions = useFinanceStore((s) => s.transactions);
@@ -97,10 +98,10 @@ export default function TransactionList() {
 
                     {/* Amount */}
                     <div
-                        className="w-1/6 items-start font-light text-teal-500 text-lg"
+                        className={`w-1/6 items-start font-light text-${ t.type == "expense"? "red" : "teal"}-500 text-lg`}
                     >
-                        {t.type == "expense"? "-":"+"}
-                        {formatNumber(t.amount)}
+                      {t.type == "expense"? "-":"+"}
+                      {formatNumber(t.amount)}
                     </div>
 
                     {/* Delete */}
@@ -119,9 +120,8 @@ export default function TransactionList() {
             })
           : <div className="w-full flex flex-col justify-center ">
               <i className="text-xl text-gray-400 mx-auto my-4">No transactions added yet</i>
-              <button onClick={openModal} className="bg-teal-500 w-fit text-white px-4 py-2 mx-auto rounded-lg hover:bg-teal-600">
-                Add Transaction
-              </button>
+
+              <Button textValue={'Add Transaction'} onClickFn={openModal}/>
             </div>
         }
     </div>

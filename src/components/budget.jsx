@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { useFinanceStore } from "../store/financeStore";
+import Button from "./sub-components/Button"
 
 export default function BudgetProgress() {
     const transactions = useFinanceStore((s) => s.transactions);
     const budgetData = useFinanceStore((s) => s.budgets);
     const updateBudget = useFinanceStore((s) => s.updateBudget);
     const cancelBudget = useFinanceStore((s) => s.cancelBudget);    
-    // const budget = budgetData?.amount;
     const setBudget = useFinanceStore((s) => s.setBudget);
     const currentMonth = new Date().toISOString().slice(0, 7);
 
     const activeBudget = (budgetData?.month === currentMonth) ? budgetData.amount : null;
 
     const spent = transactions
-        .filter((t) => t.type === "expense")
-        .reduce((sum, t) => sum + t.amount, 0);
+        .filter(
+            (t) =>
+            t.type === "expense" &&
+            t.date?.slice(0, 7) === budgetData?.month
+        ).reduce((sum, t) => sum + t.amount, 0);
 
     const [showInput, setShowInput] = useState(false);
     const [input, setInput] = useState("");
@@ -28,7 +31,7 @@ export default function BudgetProgress() {
 
   if (!activeBudget) {
     return (
-      <div className="flex flex-col items-start space-y-2 p-4 border border-gray-200 rounded-xl my-4">
+      <div className="flex flex-col items-start space-y-2 p-4 border border-gray-300 rounded-xl my-4">
         <h1 className="text-xl mb-2 text-gray-800 font-semibold">Monthly Budget</h1>
 
         {showInput ? (
@@ -59,12 +62,7 @@ export default function BudgetProgress() {
         ) : (
             <>
                 <div className="text-gray-400 italic mx-auto mb-2">No budget for the month</div>
-                <button
-                    onClick={() => setShowInput(true)}
-                    className="bg-teal-500 w-fit text-white px-6 py-2 mx-auto rounded-lg hover:bg-teal-600"
-                >
-                    Set Budget
-                </button>  
+                <Button onClickFn={() => setShowInput(true)} textValue={"Set Budget"}/>
             </>
         )}
       </div>
@@ -74,7 +72,7 @@ export default function BudgetProgress() {
   const percentage = Math.min((spent / activeBudget) * 100, 100);
 
   return (
-    <div className="w-full flex flex-col items-start space-y-2 p-4 border border-gray-200 rounded-xl my-4">
+    <div className="w-full flex flex-col items-start space-y-2 p-4 border border-gray-300 rounded-xl my-4">
       <div className="flex justify-between mb-1">
         <span className="font-medium">Monthly Budget</span>
         <span className="text-xs text-gray-500 mx-4">
@@ -95,14 +93,9 @@ export default function BudgetProgress() {
         />
       </div>
 
-      <div>
-        <button>
-            Change Budget
-        </button>
-        
-        <button>
-            Cancel Budget
-        </button>
+      <div className="my-2">
+        <Button onClickFn={updateBudget} textValue={"Change Budget"} className={'me-2'}/>
+        <Button onClickFn={cancelBudget} type="cancel" textValue={"Cancel Budget"}/>
       </div>
     </div>
   );

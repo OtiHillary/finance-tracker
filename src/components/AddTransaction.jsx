@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useFinanceStore } from "../store/financeStore";
 import { v4 as uuid } from "uuid";
+import Button from "./sub-components/Button";
 
 export default function AddTransaction() {
   const addTransaction = useFinanceStore((s) => s.addTransaction);
+  const closeModal = useFinanceStore((s)=>s.closeTransactionModal);
+  const today = new Date().toISOString().split("T")[0];
 
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
@@ -28,6 +31,7 @@ export default function AddTransaction() {
     setAmount("");
     setDescription("");
     setDate("");
+    closeModal();
   };
 
   return (
@@ -38,6 +42,7 @@ export default function AddTransaction() {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         min={1}
+        required
         className="border border-gray-300 text-gray-500 focus:border-teal-500 focus:outline-teal-500 rounded-lg p-2 my-1 w-full"
       />
 
@@ -66,6 +71,8 @@ export default function AddTransaction() {
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        required
+        max={today}
         className="border border-gray-300 text-gray-500 focus:border-teal-500 focus:outline-teal-500 rounded-lg p-2 my-1 w-full"
       />
 
@@ -73,12 +80,11 @@ export default function AddTransaction() {
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        required
         className="border border-gray-300 text-gray-500 focus:border-teal-500 focus:outline-teal-500 rounded-lg p-2 my-1 w-full"
       />
 
-      <button className="bg-teal-500 text-white px-4 py-2 my-3 rounded-lg hover:bg-teal-600">
-        Add Transaction
-      </button>
+      <Button textValue={"Add Transaction"} className={'mt-3'}/>
 
     </form>
   );

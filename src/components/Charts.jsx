@@ -23,7 +23,7 @@ export default function Charts() {
   };
 
   return (
-    <div className="rounded-xl p-4 mb-4 border border-gray-200">
+    <div className="rounded-xl p-4 mb-4 border border-gray-300">
       <h2 className="text-xl mx-2 mb-5 text-gray-800 font-semibold">
         Monthly spending
       </h2>
