@@ -16,7 +16,7 @@ Users can record financial transactions with the following details:
 
 * Amount
 * Type (Income or Expense)
-* Category ()
+* Category (Food, Housing, Entertainment, Utilities, Transport)
 * Date
 * Description
 
@@ -61,16 +61,6 @@ This allows users to quickly understand their financial position.
 
 ![Budget Progress](screenshots/transactions.png)
 
-The application includes a **visual progress bar** that shows how much of the monthly budget has been used.
-
-Color indicators:
-
-* **Green** → Safe spending
-* **Yellow** → Approaching limit
-* **Red** → Budget almost exhausted
-
-This allows users to quickly understand their financial position.
-
 ---
 
 ## Expense Filtering by Month
@@ -98,7 +88,7 @@ Visual analytics help users understand spending behavior and identify patterns.
 
 ## Transaction Modal
 
-![Budget Progress](screenshots/budget-viewer.png)
+![Budget Progress](screenshots/add-transaction.png)
 
 Transactions are created through a modal interface that allows users to quickly add financial records without leaving the dashboard.
 
