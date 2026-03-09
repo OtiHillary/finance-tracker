@@ -37,7 +37,7 @@ export default function TransactionList() {
       </h2>
 
       {/*//Filter categories */}
-      <div className="flex gap-1.5 mb-4">
+      <div className="flex gap-1.5 mb-1.5">
         <button
           onClick={() => setFilter("all")}
           className={`px-4 py-1 rounded-full text-xs ${
@@ -68,38 +68,25 @@ export default function TransactionList() {
         </button>
       </div>
 
-      <div className="flex gap-1.5 mb-4 flex-wrap">
-        <button
-          onClick={() => setCategoryFilter("all")}
-          className={`px-3 py-1 rounded-full text-xs ${
-            categoryFilter === "all"
-              ? "bg-teal-100 text-teal-500"
-              : "bg-gray-100 text-gray-500"
-          }`}
-        >
-          All Categories
-        </button>
+	<hr className="border-gray-200 w-full my-2"/>
 
-        <button onClick={() => setCategoryFilter("Food")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
-          Food
-        </button>
-
-        <button onClick={() => setCategoryFilter("Housing")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
-          Housing
-        </button>
-
-        <button onClick={() => setCategoryFilter("Transport")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
-          Transport
-        </button>
-
-        <button onClick={() => setCategoryFilter("Entertainment")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
-          Entertainment
-        </button>
-
-        <button onClick={() => setCategoryFilter("Utilities")} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-500">
-          Utilities
-        </button>
-      </div>
+<div className="flex gap-1.5 mb-4 flex-wrap">
+  {["all", "Food", "Housing", "Transport", "Entertainment", "Utilities"].map(
+    (cat) => (
+      <button
+        key={cat}
+        onClick={() => setCategoryFilter(cat)}
+        className={`px-3 py-1 rounded-full text-xs ${
+          categoryFilter === cat
+            ? "bg-teal-100 text-teal-500"
+            : "bg-gray-100 text-gray-500"
+        }`}
+      >
+        {cat}
+      </button>
+    )
+  )}
+</div>
       {/*//Filter categories END*/}
 
         {

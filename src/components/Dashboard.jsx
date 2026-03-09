@@ -41,13 +41,13 @@ export default function Dashboard() {
       <div className="border border-gray-300 p-4 rounded-xl flex flex-col justify-evenly items-start">
             <p className="text-sm text-gray-500 mb-4">Income this month</p>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-wrap">
                 <div className="flex flex-col me-4">
                     <p className="text-2xl font-medium mb-1">{formatNumber(current.income)}</p>
                     {renderChange(incomeChange)}
                 </div>
 
-                <LineChart width={80} height={40} data={incomeTrend}>
+                <LineChart width={80} height={40} data={incomeTrend} className="my-3">
                     <Line
                         type="monotone"
                         dataKey="value"
@@ -63,13 +63,13 @@ export default function Dashboard() {
       <div className="border border-gray-300 p-4 rounded-xl flex flex-col justify-evenly items-start">
             <p className="text-sm text-gray-500 mb-4">Expenses this month</p>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-wrap">
                 <div className="flex flex-col me-4">
                     <p className="text-2xl font-medium mb-1">{formatNumber(current.expenses)}</p>
                     {renderChange(expenseChange)}
                 </div>
 
-                <LineChart width={80} height={40} data={expenseTrend}>
+                <LineChart width={80} height={40} data={expenseTrend} className="my-3">
                     <Line
                         type="monotone"
                         dataKey="value"
@@ -85,13 +85,13 @@ export default function Dashboard() {
       <div className="border border-gray-300 p-4 rounded-xl flex flex-col justify-evenly items-start">
             <p className="text-sm text-gray-500 mb-4">Total Balance</p>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-wrap">
                 <div className="flex flex-col me-4">
                     <p className="text-2xl font-medium mb-1">{formatNumber(current.balance)}</p>
                     {renderChange(balanceChange)}
                 </div>
 
-                <LineChart width={80} height={40} data={balanceTrend}>
+                <LineChart width={80} height={40} data={balanceTrend} className="my-3">
                 <Line
                     type="monotone"
                     dataKey="value"
