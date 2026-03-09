@@ -238,12 +238,12 @@ No Match → Ignored
 
 Potential improvements include:
 
-* Editing transactions
+* Adding a Navbar and Sidebar for better navigation
 * Category customization
 * Multi-month budget history
-* Data export (CSV / JSON)
-* Authentication and cloud sync
-* Recurring transactions
+* More extensive analytics and data visualization
+* More Icons and Animations for better ui/ux
+* server side renderiing for better SEO practices eg Next js
 * Dark mode
 
 ---
